@@ -29,13 +29,12 @@ const App = () => {
           <Container>
             <Grid container justifyContent="space-between" alignItems="stretch" spacing={3}>
               <Grid item xs={12} sm={7}>
-                {/* <Posts setCurrentId={setCurrentId} /> */}
+                <Posts />
               </Grid>
               <Grid item xs={12} sm={4}>
-                {/* <Form currentId={currentId} setCurrentId={setCurrentId} /> */}
+                <Form/>
               </Grid>
             </Grid>
-            <Posts/>
           </Container>
         </Grow>        
       </Container>
