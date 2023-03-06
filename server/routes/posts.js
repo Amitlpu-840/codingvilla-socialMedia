@@ -6,7 +6,8 @@ const router = express.Router();
 
 
 router.get('/', getPosts );
-router.get('/create', createPost );
+router.post('/', createPost);
+// router.get('/create', createPost );
 // router.get('/home',(req, res)=>{
 //     res.send('this is home!');
 // });
