@@ -23,7 +23,7 @@ const App = () => {
 
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.heading} variant="h2" align="center">CodingVilla</Typography>
+        <Typography className={classes.heading} variant="h3" align="center">CodingVilla</Typography>
         <img className={classes.image} src={memories} alt="icon" height="60" />
       </AppBar>
       <Grow in>
@@ -39,7 +39,7 @@ const App = () => {
         </Container>
       </Grow>
       <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.footerHeading} variant="h4" align="center">Thanks for visiting. Development of other functionality is in porgress. Thanks!</Typography>
+        <Typography className={classes.footerHeading} variant="h4" align="center">Development of other functionality is in porgress. Thanks for visiting! </Typography>
       </AppBar>
     </Container>
   );
