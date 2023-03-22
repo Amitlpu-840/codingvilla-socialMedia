@@ -12,9 +12,7 @@ export default makeStyles((theme) => ({
   heading: {
     color: 'rgba(0,183,255, 1)',
   },
-  footerHeading: {
-    color: 'rgba(102,0,0, 1)',
-  },
+  
   image: {
     marginLeft: '15px',
   },
