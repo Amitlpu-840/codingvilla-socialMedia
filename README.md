@@ -4,7 +4,7 @@
 
 ## to run this project on your device
 fork this repo
-open code editor
+####open code editor
 git clone https://github.com/Amitlpu-840/codingvilla-socialmedia
 make .env file and add the following:-
 PORT = 5000
