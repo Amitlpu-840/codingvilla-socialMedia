@@ -2,9 +2,15 @@ import React, { useState } from 'react'
 import { Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@material-ui/core';
 import useStyles from './styles'
 import LockOutLinedIcon from '@material-ui/icons/LockOpenOutlined'
+import {GoogleLogin} from 'react-google-login'
 import Input from './Input';
+import Icon from './Icon';
+import GOOGLE_ID from './credential.js'
+
+
 
 function Auth() {
+  
   const classes = useStyles();
   const state = null;
   const [isSignUp, setIsSignUp] = useState(false);
@@ -24,6 +30,15 @@ function Auth() {
     handleShowPassword(false);
 
   }
+  const googleSuccess = (res) => {
+    console.log(res);
+  }
+  const googleFailure = () => {
+    console.log('google sign in unsuccessfull');
+  }
+  
+
+
   return (
 
     <Container component='main' maxWidth='xs' >
@@ -52,6 +67,17 @@ function Auth() {
           <Button type='submit' fullWidth variant='contained' color='primary' className={classes.submit} >
             {isSignUp ? 'Sign up ' : 'Sign in'}
           </Button>
+          <GoogleLogin          
+            clientId= {GOOGLE_ID.id}
+            render={(renderProps) =>(
+              <Button className={classes.googleButton} color='primary' fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon/>} variant='contained' >Google sign in</Button>
+            )}
+            onSuccess={googleSuccess}
+            onFailure={googleFailure}
+            cookiePolicy='single_host_origin'
+
+            
+          />
           <Grid container justifyContent='space-around'>
             <Grid item>
               <Button onClick={switchMode} >
