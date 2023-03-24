@@ -19,8 +19,8 @@ function Auth() {
 
   const handleShowPassword = () => setShowPassword((prevState) => !prevState);
 
-  const switchMode = () =>{
-    setIsSignUp((prev)=> !prev );
+  const switchMode = () => {
+    setIsSignUp((prev) => !prev);
     handleShowPassword(false);
 
   }
@@ -38,24 +38,24 @@ function Auth() {
             {
               isSignUp && (
                 <>
-                 
-                    <Input name='FirstName' label='First Name' handleChange={handleChange} autoFocus half />
-                    <Input name='LastName' label='last Name' handleChange={handleChange} half />
-             
+
+                  <Input name='FirstName' label='First Name' handleChange={handleChange} autoFocus half />
+                  <Input name='LastName' label='last Name' handleChange={handleChange} half />
+
                 </>
               )
             }
-            <Input name='email' label='Email address' handleChange={handleChange} type='email' />
+            <Input name='email' label='Email address' handleChange={handleChange} type='email' autoFocus />
             <Input name='password' label='Password' handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword />
-            {isSignUp && <Input name='confirmPassword' label='Repeat password' handleChange={handleChange}  type='password' /> }
+            {isSignUp && <Input name='confirmPassword' label='Repeat password' handleChange={handleChange} type='password' />}
           </Grid>
           <Button type='submit' fullWidth variant='contained' color='primary' className={classes.submit} >
-            {isSignUp ? 'Sign up ':'Sign in' }
+            {isSignUp ? 'Sign up ' : 'Sign in'}
           </Button>
           <Grid container justifyContent='space-around'>
             <Grid item>
               <Button onClick={switchMode} >
-                {isSignUp ? 'Already have an account? Sign In' : 'Not have an account? Sign Up' }
+                {isSignUp ? 'Already have an account? Sign In' : 'Not have an account? Sign Up'}
               </Button>
             </Grid>
           </Grid>
