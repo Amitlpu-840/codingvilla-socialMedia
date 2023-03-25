@@ -5,8 +5,9 @@ import LockOutLinedIcon from '@material-ui/icons/LockOpenOutlined'
  import {GoogleLogin, googleLogout} from '@react-oauth/google'
 import Input from './Input';
 import Icon from './Icon';
-import GOOGLE_ID from './credential.js'
+import { useDispatch } from 'react-redux';
 
+import jwtDecode from 'jwt-decode';
 
 
 function Auth() {
@@ -15,6 +16,7 @@ function Auth() {
   const state = null;
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = () => {
 
@@ -30,9 +32,14 @@ function Auth() {
     handleShowPassword(false);
 
   }
-  const googleSuccess = (res) => {
-    console.log(res);
-    console.log("wow");
+  const googleSuccess = async (res) => {
+    const result = jwtDecode(res?.credential)  // if we use ? only, we can get error "cannot get property of undefined"
+    const token = res?.tokenId;
+    try {
+      dispatch({type:'AUTH', data:{result, token}});
+    } catch (error) {
+      console.log(error);
+    }
     
   }
   const googleFailure = (err) => {
@@ -72,9 +79,9 @@ function Auth() {
           </Button>
           <GoogleLogin          
             
-            render={(renderProps) =>(
-              <Button className={classes.googleButton} color='primary' fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon/>} variant='contained' >Google sign in</Button>
-            )}
+            // render={(renderProps) =>(
+            //   <Button className={classes.googleButton} color='primary' fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon/>} variant='contained' >Google sign in</Button>
+            // )}
             onSuccess={googleSuccess}
             onError={googleFailure}
             cookiePolicy='single_host_origin'
