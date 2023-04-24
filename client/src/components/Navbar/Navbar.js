@@ -9,7 +9,7 @@ function Navbar() {
 
 
     return (
-        <AppBar className={classes.appBar} position="static" color="inherit">
+        <AppBar className={classes.appBar} position="static" >
             <div className={classes.brandContainer} >
                 <Typography className={classes.heading} variant="h3" component={Link} to='/' align="center">CodingVilla</Typography>
                 <img className={classes.image} src={memories} alt="icon" height="60" />

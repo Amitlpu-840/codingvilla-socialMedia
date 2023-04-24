@@ -15,7 +15,7 @@ export default makeStyles((theme) => ({
     },
   },
   heading: {
-    color: theme.palette.primary.main,
+    color: '#bbdefb',
     textDecoration: 'none',
     fontSize: '2em',
     fontWeight: 300,
