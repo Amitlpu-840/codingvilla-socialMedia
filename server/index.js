@@ -1,5 +1,5 @@
 import express from 'express'
-import bodyParser from 'body-Parser'
+import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import postRouter from './routes/posts.js'
