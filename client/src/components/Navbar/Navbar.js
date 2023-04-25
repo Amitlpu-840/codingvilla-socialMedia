@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
 import useStyles from './styles'
 import memories from '../../images/course-1-3.png'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 function Navbar() {
     const classes = useStyles();
-    const user = null;
+    const [user,setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const location = useLocation();
+    const logout = () => {
+        dispatch({type:'LOGOUT'});
+        setUser(null);
+        history.push('/');
+    }
+
+    useEffect(()=>{
+        const token = user?.token;
+
+        setUser(JSON.parse(localStorage.getItem('profile')));
+
+    },[location])
 
 
     return (
@@ -18,11 +35,11 @@ function Navbar() {
             <Toolbar className={classes.toolbar} >
                 {user ? (
                     <div className={classes.profile} >
-                        <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl} >
+                        <Avatar className={classes.purple} alt={user.result.name} src={user.result.picture} >
                             {user.result.name.charAt(0)}
                         </Avatar>
                         <Typography className={classes.userName} variant='h6'  >{user.result.name}</Typography>
-                        <Button variant='conatined' className={classes.logout} color='secondary'  >Logut</Button>
+                        <Button variant='conatined' className={classes.logout} color='secondary'  onClick={logout} >Logut</Button>
                     </div>
 
                 ) : (

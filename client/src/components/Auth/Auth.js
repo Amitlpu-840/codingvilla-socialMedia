@@ -8,6 +8,7 @@ import Icon from './Icon';
 import { useDispatch } from 'react-redux';
 
 import jwtDecode from 'jwt-decode';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 function Auth() {
@@ -17,6 +18,7 @@ function Auth() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = () => {
 
@@ -37,6 +39,7 @@ function Auth() {
     const token = res?.tokenId;
     try {
       dispatch({type:'AUTH', data:{result, token}});
+      history.push('/');
     } catch (error) {
       console.log(error);
     }
