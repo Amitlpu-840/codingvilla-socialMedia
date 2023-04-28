@@ -39,7 +39,7 @@ function Navbar() {
                             {user.result.name.charAt(0)}
                         </Avatar>
                         <Typography className={classes.userName} variant='h6'  >{user.result.name}</Typography>
-                        <Button variant='conatined' className={classes.logout} color='secondary'  onClick={logout} >Logut</Button>
+                        <Button variant='contained' className={classes.logout} color='secondary'  onClick={logout} >Logut</Button>
                     </div>
 
                 ) : (
