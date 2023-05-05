@@ -6,32 +6,40 @@ import LockOutLinedIcon from '@material-ui/icons/LockOpenOutlined'
 import Input from './Input';
 import Icon from './Icon';
 import { useDispatch } from 'react-redux';
+import { signin,signup } from '../../actions/auth';
 
 import jwtDecode from 'jwt-decode';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
+const initialFormData = { firstName:'', lastName:'',email:'',password:'',confirmPassword:''}
 
 function Auth() {
   
   const classes = useStyles();
-  const state = null;
   const [isSignUp, setIsSignUp] = useState(false);
+  const [formData,setFormData] = useState(initialFormData);
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit = () => {
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(formData);
+    if(isSignUp){
+      dispatch(signup(formData,history));
+    }else{
+      dispatch(signin(formData,history));
+    }
   }
-  const handleChange = () => {
-
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value  }) 
   }
 
   const handleShowPassword = () => setShowPassword((prevState) => !prevState);
 
   const switchMode = () => {
     setIsSignUp((prev) => !prev);
-    handleShowPassword(false);
+    setShowPassword(false);
 
   }
   const googleSuccess = async (res) => {
@@ -67,8 +75,8 @@ function Auth() {
               isSignUp && (
                 <>
 
-                  <Input name='FirstName' label='First Name' handleChange={handleChange} autoFocus half />
-                  <Input name='LastName' label='last Name' handleChange={handleChange} half />
+                  <Input name='firstName' label='First Name' handleChange={handleChange} autoFocus half />
+                  <Input name='lastName' label='last Name' handleChange={handleChange} half />
 
                 </>
               )
@@ -82,9 +90,9 @@ function Auth() {
           </Button>
           <GoogleLogin          
             
-            // render={(renderProps) =>(
-            //   <Button className={classes.googleButton} color='primary' fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon/>} variant='contained' >Google sign in</Button>
-            // )}
+            render={(renderProps) =>(
+              <Button className={classes.googleButton} color='primary' fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon/>} variant='contained' >Google sign in</Button>
+            )}
             onSuccess={googleSuccess}
             onError={googleFailure}
             cookiePolicy='single_host_origin'
