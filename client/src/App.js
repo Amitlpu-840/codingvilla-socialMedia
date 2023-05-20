@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
 import Auth from "./components/Auth/Auth";
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const App = () => {

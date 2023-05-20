@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@material-ui/core';
 import useStyles from './styles'
 import LockOutLinedIcon from '@material-ui/icons/LockOpenOutlined'
- import {GoogleLogin, googleLogout} from '@react-oauth/google'
+ import {GoogleLogin} from '@react-oauth/google'
 import Input from './Input';
 import Icon from './Icon';
 import { useDispatch } from 'react-redux';
@@ -82,7 +82,7 @@ function Auth() {
               )
             }
             <Input name='email' label='Email address' handleChange={handleChange} type='email' autoFocus />
-            <Input name='password' label='Password' handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword />
+            <Input name='password' label='Password' handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
             {isSignUp && <Input name='confirmPassword' label='Repeat password' handleChange={handleChange} type='password' />}
           </Grid>
           <Button type='submit' fullWidth variant='contained' color='primary' className={classes.submit} >

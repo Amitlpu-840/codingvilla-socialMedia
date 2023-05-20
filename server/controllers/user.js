@@ -33,7 +33,7 @@ export const signup = async (req,res) => {
     console.log("data fetched");
     try {
         const existingUser = await User.findOne({email});
-        console.log(existingUser);
+        
         if(existingUser) return res.status(400).json({message:"User already exist. Please sign in"});
         console.log("sent");
 

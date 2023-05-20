@@ -10,7 +10,7 @@ function Home() {
 
     const classes = useStyles();
   const dispatch = useDispatch();
-  const [currentId, setCurrentId] = useState(0);
+  const [currentId, setCurrentId] = useState(null);
 
   useEffect(() => {
     dispatch(getPosts());
@@ -19,7 +19,7 @@ function Home() {
   return (
     <Grow in>
         <Container>
-          <Grid className={classes.mainContainer} r container justifyContent="space-between" alignItems="stretch" spacing={3}>
+          <Grid className={classes.mainContainer} container justifyContent="space-between" alignItems="stretch" spacing={3}>
             <Grid item xs={12} sm={7}>
               <Posts setCurrentId={setCurrentId} />
             </Grid>
